@@ -15,7 +15,7 @@ function Navbar(){
                 <div className='myCustomNavMenu'>
                     <Link to='/'>Home</Link> 
                     <Link to='#'>About</Link>
-                    <Link to='#'>Learn</Link>
+                    <Link to='/login'>Learn</Link>
                     <Link to='/course'>Courses</Link>
                     <Link to='/signup'>Sign Up</Link>
                 </div>

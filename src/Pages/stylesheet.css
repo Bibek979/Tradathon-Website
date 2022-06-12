@@ -16,3 +16,25 @@ a{
   /* flex-direction: row-reverse; */
   /* justify-content: space-evenly; */
 }
+
+.text-right{
+  text-align: end;
+}
+
+label.text-white.otpLabel{
+  align-self: center;
+}
+input{
+  background-color: rgba(161, 161, 161, 0.222);
+}
+
+.labelColor{
+  width: 250px;
+  height: 40px;
+}
+
+
+input.labelColor.otp{
+  width: 50%;
+  align-self: center;
+}

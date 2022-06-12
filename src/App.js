@@ -7,7 +7,8 @@ import SignUpForm from './Pages/Signup';
 import PageNotFound from './Pages/pageNotFound';
 import Footer from './websites/Components/footer';
 import Course from './Pages/Course';
-
+import Login from './Pages/Login';
+import ForgotPassword from './Pages/ForgotPassword';
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
             courseContent3 = "Past Performance"
             coursePrice = '1000'
             />} />
+            <Route path='login' element={<Login />} />
+            <Route path='forgotpwd' element={<ForgotPassword />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
           <Footer />

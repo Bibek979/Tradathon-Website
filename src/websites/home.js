@@ -9,6 +9,8 @@ import img1 from '../Images/research.png';
 import img2 from '../Images/wait.png';
 import img3 from '../Images/target.png';
 import img4 from '../Images/trade.png';
+
+
 function Home() {
 
     return(
