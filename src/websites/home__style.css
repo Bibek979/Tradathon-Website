@@ -1,0 +1,19 @@
+.home__container{
+    margin: 0%;
+    margin: 2% 0%;
+}
+
+.rolling__img{
+    margin: 0;
+}
+
+.rolling__img img{
+    width: 100%;
+}
+
+.learn__cards{
+  
+    text-align: center;
+    display: flex;
+    margin-bottom: 3em;
+  }

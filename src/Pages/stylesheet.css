@@ -1,0 +1,18 @@
+
+/* Declared here since visible everywhere */
+a{
+  text-decoration: none;
+}
+
+.courseCard{
+  width:90%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.btnCustomStyle{
+  display: flex;
+  /* flex-direction: row-reverse; */
+  /* justify-content: space-evenly; */
+}

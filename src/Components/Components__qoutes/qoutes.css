@@ -1,0 +1,17 @@
+.qoutes__container{
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 45vh;
+    background-repeat: no-repeat;
+    background-image: url("E:/WebProgramming/Stock Education Site/tradathon/src/Images/bg__qoutes__img.png");
+    background-position: center;
+    text-justify:auto;
+}
+
+.qoutes__container__words{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

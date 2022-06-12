@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+import Home from './websites/home';
+import Navbar from './Components/Navbar';
 import './App.css';
+import SignUpForm from './Pages/Signup';
+import PageNotFound from './Pages/pageNotFound';
+import Footer from './websites/Components/footer';
+import Course from './Pages/Course';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='div__app'>
+      <BrowserRouter>
+      <Navbar />
+        <Routes>
+          {/* <Route path='/' element={<Navbar />} /> */}
+            <Route index='Home' element={<Home />} />
+            <Route path='signup' element={<SignUpForm />} />
+            <Route path='course' element={<Course 
+            courseHeading="Basics of Stock Market"
+            courseContent1 = "Chart Reading"
+            courseContent2 = "Fundamental Analysis"
+            courseContent3 = "Past Performance"
+            coursePrice = '1000'
+            />} />
+            <Route path='*' element={<PageNotFound />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      
     </div>
   );
 }

@@ -1,0 +1,19 @@
+footer{
+    background-color: rgba(241, 215, 249, 0.975);
+    border-radius: .25rem!important;
+}
+.footerTop{
+    padding: 2em 0em;
+    border-bottom: 1px solid black;
+    margin: 0 100px;
+    text-align: center;
+}
+
+.footerTop a{
+    padding: 0px 15px;
+}
+
+.footerBottom{
+    text-align: center;
+    padding-bottom: 1.5em;
+}

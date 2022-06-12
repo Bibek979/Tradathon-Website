@@ -1,0 +1,10 @@
+
+.myCustomCardImg{
+    width: 50px;
+    align-self: center;
+    padding-top: 0.8em;
+}
+
+.card-text{
+    padding-bottom: 0.8em;
+}

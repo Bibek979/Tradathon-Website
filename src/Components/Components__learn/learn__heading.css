@@ -1,0 +1,11 @@
+.learn__head__container{
+    text-align: center;
+    margin: 0%;
+    border: 0.3px solid black;
+    border-radius: 10px;
+    font-size: 36px;
+    margin-bottom: 0.8em;
+}
+h3{
+    margin: 0;
+}

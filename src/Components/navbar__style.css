@@ -1,0 +1,50 @@
+.rounded{
+    background-color: rgba(241, 215, 249, 0.975);
+}
+
+.customNavbar{
+    display: flex;
+    justify-content: space-between;
+}
+.myCustomNavMenu{
+    align-self: center;
+    margin-right: 0;
+}
+
+.myCustomNavMenu a{
+    font-size: large;
+    margin: 0px 1.1em;
+}
+
+.myCustomNavMenu a:hover{
+    transform: scale(1.5);
+}
+/* .myCustomNavMenu a::after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 4px;
+    background-color: #FEFEFE;
+    transform-origin: bottom right;
+    transition: transform 0.5s ease;
+    transform: scaleX(0);
+}
+.myCustomNavMenu a:hover::after {
+    transform-origin: bottom left;
+    transform: scaleX(1);
+} */
+
+.navbar-light{
+    margin: 0;
+    padding: 0;
+    padding-left: 1.1em;
+}
+@media only screen and (max-device-width: 500px) {
+    .mobileToggleMenuBtn{
+        display: none;
+    }
+}
+
+    
