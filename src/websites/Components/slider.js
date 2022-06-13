@@ -1,7 +1,7 @@
 import React from 'react';
 import './slider.css';
-import banner from 'E:/WebProgramming/Stock Education Site/tradathon/src/Images/banner__image__1.png'
-import banner2 from 'E:/WebProgramming/Stock Education Site/tradathon/src/Images/banner__image__2.png'
+import banner from '../Images/banner__image__1.png'
+import banner2 from '../Images/banner__image__2.png'
 
 
 

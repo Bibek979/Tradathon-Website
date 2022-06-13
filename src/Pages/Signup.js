@@ -1,66 +1,161 @@
-import React from 'react';
-import './Signup.css';
-// import { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import React, { useState } from "react";
+import "./Signup.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function SignUpForm() {
-    // const [state, setState] = useState({
-    //     firstName:"",
-    //     lastName:"",
-    //     phone:"",
-    //     email:"",
-    //     password:""
-    // });
-const handleSubmit = (e) =>{
-    e.preventDefault();
-    // const newRegData = {...state};
-    console.log("newRegData");
-}
-const handleInput = (e) =>{
-    const name = e.target.name;
+    const [confpwd, setConfpwd] = useState("");
+  const [allRecords, setAllRecords] = useState([]);
+  const [state, setState] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
+
+    function onChangeHandler(e){
+    const nameOfElem = e.target.name;
+    console.log(nameOfElem);
     const value = e.target.value;
-    console.log(name, value)
-    // setState({...state, [name]:value})
-}
+    console.log(value);
+    setState({...state, [nameOfElem]: value});
+  }
 
-    return(
-        <div className='container-fluid'>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(validateForm())
+    {
+        const newRecord = {...state, id:new Date().getTime().toString()};
+        setAllRecords([ ...allRecords, newRecord]);
+        console.log(confpwd);
+    }
+    else{
+        //TBD
+    }
+  }
 
-            <form className='customFormStyle mb-5' onSubmit={handleSubmit}>
-                <div className="row text-justify">
-                    <h1 className='col-12 text-center width-5 pb-5'>Registration</h1>
-                    <label className='col-5 offset-1 text-center text-black'>First Name</label>
-                    <label className='col-5 offset-1 text-center text-black'>Last Name</label>
-                </div>
-                <div className='row mb-4'>
-                    <input type='text' className='col-sm-5 offset-1' placeholder='John'></input>
-                    <input type='text' className='col-sm-5 offset-1' placeholder='Doe'></input>
-                </div>
+//   fix this validate form
 
-                <div className='row justify-content-md-center mb-4' >
-                    <div className='col-sm-6 text-center'><label className='text-black'>email</label></div>
-                    <div className='col-sm-6'><input className='col-12' type='email' placeholder='yourmail@mail.com'></input></div>
-                </div>
+  return validateForm = () =>{
+    if(state.firstname == '' || state.firstname == ' '){
+        return false;
+    }
+    else if(state.lastname == '')
+    {
+        return false;
+    }
+    else if(state.email == '')
+    {
+        return false;
+    }
+    else if(state.password == confpwd)
+    {
+        return false;
+    }
 
-                <div className="row text-justify">
-                    <label className='col-5 offset-1 text-center text-black'>New Password</label>
-                    <label className='col-5 offset-1 text-center text-black'>Confirm New Password</label>
-                </div>
+    return true;
+  }
 
-                <div className='row mb-4'>
-                    <input type='password' className='col-sm-5 offset-1' placeholder=''></input>
-                    <input type='password' className='col-sm-5 offset-1' placeholder=''></input>
-                </div>
+  return (
+    <div className="container-fluid">
 
-                <div className='align-self-center'>
-                    <button onClick={handleSubmit}>
-                        Submit
-                    </button>
-                </div>
+        {/* The text here has been deactivated because the data can be clearly 
+        seen on screen when not commented. */}
+        {/* <div>
+            {
+                allRecords.map((curElem) => {
+                    return(
+                        <div key={curElem.id}>
+                            <p>
+                                {curElem.firstname}<br></br>
+                                {curElem.lastname}<br></br>
+                                {curElem.email}<br></br>
+                                {curElem.password}<br></br>
+                            </p>
+                    </div>
+                    )
+                })
+            }
+        </div> */}
 
-            </form>
+      <form className="customFormStyle mb-5" onSubmit={handleSubmit}>
+        <div className="row text-justify">
+          <h1 className="col-12 text-center width-5 pb-5">Registration</h1>
+          <label className="col-5 offset-1 text-center text-black">
+            First Name
+          </label>
+          <label className="col-5 offset-1 text-center text-black">
+            Last Name
+          </label>
         </div>
-    )
+        <div className="row mb-4">
+          <input
+            id="firstname"
+            name="firstname"
+            type="text"
+            className="col-sm-5 offset-1"
+            placeholder="John"
+            value={state.firstname}
+            onChange={onChangeHandler}
+          ></input>
+          <input
+            id="firstname"
+            name="lastname"
+            type="text"
+            className="col-sm-5 offset-1"
+            placeholder="Doe"
+            value={state.lastname}
+            onChange={onChangeHandler}
+          ></input>
+        </div>
+
+        <div className="row justify-content-md-center mb-4">
+          <div className="col-sm-6 text-center">
+            <label className="text-black">email</label>
+          </div>
+          <div className="col-sm-6">
+            <input
+            id="email"
+              name="email"
+              className="col-12"
+              type="email"
+              placeholder="yourmail@mail.com"
+              value={state.email}
+              onChange={onChangeHandler}
+            ></input>
+          </div>
+        </div>
+
+        <div className="row text-justify">
+          <label className="col-5 offset-1 text-center text-black">
+            New Password
+          </label>
+          <label className="col-5 offset-1 text-center text-black">
+            Confirm New Password
+          </label>
+        </div>
+
+        <div className="row mb-4">
+          <input
+            id="password"
+            name="password"
+            type="password"
+            className="col-sm-5 offset-1"
+            placeholder=""
+            value={state.password}
+            onChange={onChangeHandler}
+          ></input>
+          <input
+            name="password"
+            type="password"
+            className="col-sm-5 offset-1"
+            onChange={(e)=>{setConfpwd(e.target.value)}}
+          ></input>
+        </div>
+
+        <div>
+          <button>Submit</button>
+        </div>
+      </form>
+    </div>
+  );
 }
