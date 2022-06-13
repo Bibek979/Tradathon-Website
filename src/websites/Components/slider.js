@@ -4,6 +4,7 @@ import banner from 'E:/WebProgramming/Stock Education Site/tradathon/src/Images/
 import banner2 from 'E:/WebProgramming/Stock Education Site/tradathon/src/Images/banner__image__2.png'
 
 // This is for test 
+// This from Hari
 
 
 
