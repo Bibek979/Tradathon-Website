@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import "./Signup.css";
+import LiveAlert from "../Components/Components__SignUp/LiveAlert";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 
 export default function SignUpForm() {
-    const [confpwd, setConfpwd] = useState("");
+  let errorStorVar = ""; //To store the error causing value
+  const [displayAlert, setDisplayAlert] = useState("false");
+  const [confpwd, setConfpwd] = useState("");
   const [allRecords, setAllRecords] = useState([]);
   const [state, setState] = useState({
     firstname: "",
@@ -12,55 +16,49 @@ export default function SignUpForm() {
     password: "",
   });
 
-    function onChangeHandler(e){
+  function onChangeHandler(e) {
     const nameOfElem = e.target.name;
     console.log(nameOfElem);
     const value = e.target.value;
     console.log(value);
-    setState({...state, [nameOfElem]: value});
+    setState({ ...state, [nameOfElem]: value });
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(validateForm())
-    {
-        const newRecord = {...state, id:new Date().getTime().toString()};
-        setAllRecords([ ...allRecords, newRecord]);
-        console.log(confpwd);
+    if (validateForm()) {
+      const newRecord = { ...state, id: new Date().getTime().toString() };
+      setAllRecords([...allRecords, newRecord]);
+      setDisplayAlert("false");
+      console.log("Signed Up successfully !");
+    } else {
+      console.log("There is error in input --->" + errorStorVar);
+      setDisplayAlert("true");
     }
-    else{
-        //TBD
-    }
-  }
+  };
 
-//   fix this validate form
-
-  return validateForm = () =>{
-    if(state.firstname == '' || state.firstname == ' '){
-        return false;
+  const validateForm = () => {
+    if (state.firstname === "") {
+      errorStorVar = "firstname";
+      return false;
+    } else if (state.lastname === "") {
+      errorStorVar = "lastname";
+      return false;
+    } else if (state.email === "") {
+      errorStorVar = "email";
+      return false;
+    } else if (state.password === confpwd) {
+      errorStorVar = "password";
+      return false;
     }
-    else if(state.lastname == '')
-    {
-        return false;
-    }
-    else if(state.email == '')
-    {
-        return false;
-    }
-    else if(state.password == confpwd)
-    {
-        return false;
-    }
-
     return true;
-  }
+  };
 
   return (
     <div className="container-fluid">
-
-        {/* The text here has been deactivated because the data can be clearly 
+      {/* The text here has been deactivated because the data can be clearly 
         seen on screen when not commented. */}
-        {/* <div>
+      {/* <div>
             {
                 allRecords.map((curElem) => {
                     return(
@@ -98,7 +96,7 @@ export default function SignUpForm() {
             onChange={onChangeHandler}
           ></input>
           <input
-            id="firstname"
+            id="lastname"
             name="lastname"
             type="text"
             className="col-sm-5 offset-1"
@@ -114,7 +112,7 @@ export default function SignUpForm() {
           </div>
           <div className="col-sm-6">
             <input
-            id="email"
+              id="email"
               name="email"
               className="col-12"
               type="email"
@@ -148,14 +146,18 @@ export default function SignUpForm() {
             name="password"
             type="password"
             className="col-sm-5 offset-1"
-            onChange={(e)=>{setConfpwd(e.target.value)}}
+            onChange={(e) => {
+              setConfpwd(e.target.value);
+            }}
           ></input>
         </div>
 
         <div>
-          <button>Submit</button>
+          <button className="btn btn-primary">Submit</button>
         </div>
       </form>
+
+      <LiveAlert setDisplay={displayAlert} errorIn={errorStorVar} />
     </div>
   );
 }
