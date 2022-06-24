@@ -4,6 +4,7 @@ import LiveAlert from "../Components/Components__SignUp/LiveAlert";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
+
 export default function SignUpForm() {
   let errorStorVar = ""; //To store the error causing value
   const [displayAlert, setDisplayAlert] = useState("false");
@@ -18,9 +19,7 @@ export default function SignUpForm() {
 
   function onChangeHandler(e) {
     const nameOfElem = e.target.name;
-    console.log(nameOfElem);
     const value = e.target.value;
-    console.log(value);
     setState({ ...state, [nameOfElem]: value });
   }
 
@@ -35,6 +34,24 @@ export default function SignUpForm() {
       console.log("There is error in input --->" + errorStorVar);
       setDisplayAlert("true");
     }
+
+    let databody = {
+      "fname": state.firstname,
+      "lname": state.lastname,
+      "email": state.email, 
+      "password": state.password
+    }
+
+    return fetch('http://localhost:5500/registered', {
+      method: 'post',
+      body: JSON.stringify(databody),
+      headers: {
+        'Content-type': 'application/json'
+      },
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch((e)=>console.log("some error"+e));
   };
 
   const validateForm = () => {
