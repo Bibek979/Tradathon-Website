@@ -4,7 +4,6 @@ import LiveAlert from "../Components/Components__SignUp/LiveAlert";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
-
 export default function SignUpForm() {
   let errorStorVar = ""; //To store the error causing value
   const [displayAlert, setDisplayAlert] = useState("false");

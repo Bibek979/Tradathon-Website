@@ -1,0 +1,12 @@
+TO DO 
+Add code to send the data to the DB
+
+Signup Form
+1. incomplete page alert -- Remove the displayAlert
+2. incomplete page alert -- add default alert in chrome
+3. Remove return fetch method
+4. Add axios to send the post method
+
+Subsequently update the index.js file in backend
+
+1. Receive the request and store it to DB. 
