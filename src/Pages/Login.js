@@ -1,60 +1,87 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./stylesheet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+import { Button } from "react-bootstrap";
 export default function Login() {
-  // To store the values of email and password by the user
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: ""
+  })
 
-  //To store the final values of Email and password we use another useState with array initialization
-  const [data, setData] = useState([]);
-
+  const handleChange = (e) =>{
+    const elemName = e.target.name;
+    const value = e.target.value;
+    setLoginData({...loginData, [elemName]: value});
+  }
+  
   function handleSubmitAction(e) {
     e.preventDefault();
-    //Adding this line to add both the info to this array object
-    //Have to make key:value pair to store in (datauseState)
-    const toArray = { email: email, password: password };
-    setData([...data, toArray]);
-    console.log(data);
-    console.log(email, password);
+    const {email, password} = loginData;
+    setLoginData({...loginData, email: email.toLowerCase()});
+    if(email && password)
+    {
+      axios.post("http://localhost:5500/login", loginData)
+      .then( res => {
+        if(res.data.status === 0){
+          alert(res.data.message);
+          navigate("/userdashboard");
+        }
+        else if( res.data.status === 1){
+          alert(res.data.message)
+        }
+        else{
+          alert(res.data.message);
+        }
+      })
+      
+    }
+    else{
+      alert("Credentials Missing");
+    }
   }
 
 
   return (
-    <div className="container w-25 bg-secondary bg-gradient">
+    <div className="container rounded w-25 bg-secondary bg-gradient">
       <h3 className="card-title text-center pt-4 text-white">Login</h3>
       <form className="form" onSubmit={handleSubmitAction}>
         <div className="d-flex p-3 flex-column">
-          <label className="text-center p-2 text-white">email/user</label>
+          <label className="text-center p-2 text-white">E-Mail/User</label>
           <input
             type="email"
+            name="email"
             id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={loginData.email}
+            onChange={handleChange}
             placeholder="email@email-provider.com"
           ></input>
         </div>
 
         <div className="d-flex p-3 flex-column">
-          <label className="text-center p-2 text-white">password</label>
+          <label className="text-center p-2 text-white">Password</label>
           <input
             type="password"
-            value={password}
+            name="password"
+            value={loginData.password}
             id="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleChange}
             placeholder="**********"
           ></input>
         </div>
         <div className="d-flex p-3 flex-column">
-          <button className="m-2">Login</button>
+          <Button variant="primary" type="submit" className="m-2">Login</Button>
+          <Link to="/signup" className="text-white text-right">
+            New User ?
+          </Link>
           <Link to="/forgotpwd" className="text-white text-right">
-            forgot password ?
+            Forgot Password ?
           </Link>
         </div>
       </form>
-
-        //This section here merely justs displays the output on loginform
 
       {/* <div className="container bg-primary">
         {

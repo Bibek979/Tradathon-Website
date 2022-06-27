@@ -1,6 +1,11 @@
-.customFormStyle{
+/* .customFormStyle{
     background-color: rgb(208, 252, 203);
     border-radius: 10px;
+} */
+
+.signup-container{
+    width: 35%;
+    background-color: rgb(212, 212, 212);
 }
 
 /* .alert-danger{

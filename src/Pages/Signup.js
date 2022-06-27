@@ -1,179 +1,94 @@
-import React, { useState } from "react";
 import "./Signup.css";
-import LiveAlert from "../Components/Components__SignUp/LiveAlert";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./Signup.css";
+// import LiveAlert from "../Components/Components__SignUp/LiveAlert";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import {Form} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default function SignUpForm() {
-  let errorStorVar = ""; //To store the error causing value
-  const [displayAlert, setDisplayAlert] = useState("false");
+  const navigate = useNavigate();
+  // const [displayAlert, setDisplayAlert] = useState("false");
   const [confpwd, setConfpwd] = useState("");
-  const [allRecords, setAllRecords] = useState([]);
+  // const [allRecords, setAllRecords] = useState([]);
   const [state, setState] = useState({
     firstname: "",
     lastname: "",
     email: "",
     password: "",
+    confpassword: ""
   });
 
   function onChangeHandler(e) {
     const nameOfElem = e.target.name;
     const value = e.target.value;
     setState({ ...state, [nameOfElem]: value });
+    console.log(nameOfElem+": "+value)
+    
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      const newRecord = { ...state, id: new Date().getTime().toString() };
-      setAllRecords([...allRecords, newRecord]);
-      setDisplayAlert("false");
+    const {firstname, lastname, email, password, confpassword} = state;
+    console.log(firstname+" "+lastname+" "+email+" "+password+" "+confpassword)
+    if (firstname && lastname && email) {
+      axios.post("http://localhost:5500/registration", state)
+      .then( res => alert(res.data.message))
+      .then( () => navigate("/login"))
       console.log("Signed Up successfully !");
     } else {
-      console.log("There is error in input --->" + errorStorVar);
-      setDisplayAlert("true");
+      console.log("There is error in input");
+      alert("Validate the input field ");
     }
-
-    let databody = {
-      "fname": state.firstname,
-      "lname": state.lastname,
-      "email": state.email, 
-      "password": state.password
-    }
-
-    return fetch('http://localhost:5500/registered', {
-      method: 'post',
-      body: JSON.stringify(databody),
-      headers: {
-        'Content-type': 'application/json'
-      },
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch((e)=>console.log("some error"+e));
   };
 
-  const validateForm = () => {
-    if (state.firstname === "") {
-      errorStorVar = "firstname";
-      return false;
-    } else if (state.lastname === "") {
-      errorStorVar = "lastname";
-      return false;
-    } else if (state.email === "") {
-      errorStorVar = "email";
-      return false;
-    } else if (state.password === confpwd) {
-      errorStorVar = "password";
-      return false;
-    }
-    return true;
-  };
+  // function validateForm() {
+  //   const {fname, lname, email, pwd, confpwd} = state;
+  //   if(fname && lname && email && (pwd === confpwd))
+  //     return true;
+  //   else
+  //     return false;
+  // };
 
   return (
-    <div className="container-fluid">
-      {/* The text here has been deactivated because the data can be clearly 
-        seen on screen when not commented. */}
-      {/* <div>
-            {
-                allRecords.map((curElem) => {
-                    return(
-                        <div key={curElem.id}>
-                            <p>
-                                {curElem.firstname}<br></br>
-                                {curElem.lastname}<br></br>
-                                {curElem.email}<br></br>
-                                {curElem.password}<br></br>
-                            </p>
-                    </div>
-                    )
-                })
-            }
-        </div> */}
+    <div className="container-sm my-5 py-3 signup-container">
+      <h1 className="mb-4 text-center">Registration Form</h1>
+      <Form onSubmit={handleSubmit} className="w-2">
+        <Form.Group className="mb-3 text-center fs-6" controlId="formFirstName">
+          <Form.Label>First Name</Form.Label>
+          <Form.Control type="text" placeholder="Johnny" name="firstname" value={state.firstname} onChange={onChangeHandler}></Form.Control>
+        </Form.Group>
 
-      <form className="customFormStyle mb-5" onSubmit={handleSubmit}>
-        <div className="row text-justify">
-          <h1 className="col-12 text-center width-5 pb-5">Registration</h1>
-          <label className="col-5 offset-1 text-center text-black">
-            First Name
-          </label>
-          <label className="col-5 offset-1 text-center text-black">
-            Last Name
-          </label>
-        </div>
-        <div className="row mb-4">
-          <input
-            id="firstname"
-            name="firstname"
-            type="text"
-            className="col-sm-5 offset-1"
-            placeholder="John"
-            value={state.firstname}
-            onChange={onChangeHandler}
-          ></input>
-          <input
-            id="lastname"
-            name="lastname"
-            type="text"
-            className="col-sm-5 offset-1"
-            placeholder="Doe"
-            value={state.lastname}
-            onChange={onChangeHandler}
-          ></input>
-        </div>
+        <Form.Group className="mb-3 text-center fs-6"  controlId="formLastName">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control type="text" placeholder="Sins" name="lastname" value={state.lastname} onChange={onChangeHandler}></Form.Control>
+        </Form.Group>
 
-        <div className="row justify-content-md-center mb-4">
-          <div className="col-sm-6 text-center">
-            <label className="text-black">email</label>
-          </div>
-          <div className="col-sm-6">
-            <input
-              id="email"
-              name="email"
-              className="col-12"
-              type="email"
-              placeholder="yourmail@mail.com"
-              value={state.email}
-              onChange={onChangeHandler}
-            ></input>
-          </div>
-        </div>
+        <Form.Group className="mb-3 text-center fs-6" controlId="formEmail">
+          <Form.Label>E-mail</Form.Label>
+          <Form.Control type="email" placeholder="Johnnysins69@yahoo.com" name="email" value={state.email} onChange={onChangeHandler}></Form.Control>
+        </Form.Group>
 
-        <div className="row text-justify">
-          <label className="col-5 offset-1 text-center text-black">
-            New Password
-          </label>
-          <label className="col-5 offset-1 text-center text-black">
-            Confirm New Password
-          </label>
-        </div>
+        <Form.Group className="mb-3 text-center fs-6" controlId="formPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="***********" name="password" value={state.password} onChange={onChangeHandler}></Form.Control>
+        </Form.Group>
 
-        <div className="row mb-4">
-          <input
-            id="password"
-            name="password"
-            type="password"
-            className="col-sm-5 offset-1"
-            placeholder=""
-            value={state.password}
-            onChange={onChangeHandler}
-          ></input>
-          <input
-            name="password"
-            type="password"
-            className="col-sm-5 offset-1"
-            onChange={(e) => {
-              setConfpwd(e.target.value);
-            }}
-          ></input>
-        </div>
+        <Form.Group className="mb-3 text-center fs-6" controlId="formConfPassword">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control type="password" placeholder="***********" name="confpassword" value={state.confpassword} onChange={onChangeHandler}></Form.Control>
+        </Form.Group>
 
-        <div>
-          <button className="btn btn-primary">Submit</button>
+        <div className="d-flex justify-content-around pt-3">
+          <Button variant="primary" type="submit">Register Me !</Button>
+          <Button variant="primary" type="reset">Reset</Button>
+          <Button variant="primary" onClick={()=>navigate("/login")}>Back to Login</Button>
         </div>
-      </form>
-
-      <LiveAlert setDisplay={displayAlert} errorIn={errorStorVar} />
+      </Form>
     </div>
   );
 }

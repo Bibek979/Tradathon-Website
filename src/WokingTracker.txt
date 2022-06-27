@@ -1,12 +1,28 @@
-TO DO 
-Add code to send the data to the DB
+----- To Do ----- 25 June 2022
 
+*************************************Fix Immediate***************************
 Signup Form
-1. incomplete page alert -- Remove the displayAlert
-2. incomplete page alert -- add default alert in chrome
-3. Remove return fetch method
-4. Add axios to send the post method
+1. incomplete page alert -- Remove the displayAlert __DONE
+2. incomplete page alert -- add default alert in chrome __DONE
+3. Remove return fetch method  __DONE
+5. Add axios to send the post method __DONE
 
-Subsequently update the index.js file in backend
+**************************************Fix Later******************************
+1. Fix the validation function part __TEMP WORKING
+Subsequently update the index.js file in backend  __TEMP WORKING
 
-1. Receive the request and store it to DB. 
+
+----- To Do ----- 26 June 2022
+
+*************************************Fix Immediate*************************************
+Login Form 
+1. Connect the login to database.
+2. Create Dashboard for user after login successfully.
+3. 
+
+
+*************************************Fix Later*************************************
+1. Design of the Login Form
+
+
+
