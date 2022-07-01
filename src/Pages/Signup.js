@@ -1,6 +1,5 @@
 import "./Signup.css";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
@@ -13,7 +12,6 @@ import { Button } from "react-bootstrap";
 export default function SignUpForm() {
   const navigate = useNavigate();
   // const [displayAlert, setDisplayAlert] = useState("false");
-  const [confpwd, setConfpwd] = useState("");
   // const [allRecords, setAllRecords] = useState([]);
   const [state, setState] = useState({
     firstname: "",
@@ -33,6 +31,7 @@ export default function SignUpForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // setState({...state, email: email.toLowerCase()});
     const {firstname, lastname, email, password, confpassword} = state;
     console.log(firstname+" "+lastname+" "+email+" "+password+" "+confpassword)
     if (firstname && lastname && email) {

@@ -21,7 +21,6 @@ export default function Login() {
   function handleSubmitAction(e) {
     e.preventDefault();
     const {email, password} = loginData;
-    setLoginData({...loginData, email: email.toLowerCase()});
     if(email && password)
     {
       axios.post("http://localhost:5500/login", loginData)

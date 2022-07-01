@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Home from './websites/home';
-import Navbar from './Components/Navbar';
+import Navbar from './Components/ComponentsNavbar/Navbar';
 import './App.css';
 import SignUpForm from './Pages/Signup';
 import PageNotFound from './Pages/pageNotFound';
@@ -10,8 +10,9 @@ import Course from './Pages/Course';
 import Login from './Pages/Login';
 import ForgotPassword from './Pages/ForgotPassword';
 import UserDashboard from './Components/userDashboard/UserDashboard';
-
+import LogedInNavbar from './Components/ComponentsNavbar/logedInNavbar';
 function App() {
+  const [userLogin, setUserLogin] = useState(false);
   return (
     <div className='div__app'>
       <BrowserRouter>

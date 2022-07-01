@@ -22,11 +22,13 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = new mongoose.model("User", userSchema);
+const Courses = new mongoose.model("Courses", userSchema);
 
 // ***********************Registration Post Request ************************
+
 app.post("/registration", (req, res) => {
-    const { firstname, lastname, email, password } = req.body;
-    
+    var { firstname, lastname, email, password } = req.body;
+    email = email.toLowerCase();
     User.findOne({email: email}, (err, user) => {
         if(user){
             res.send({message: "user already registered"});
@@ -52,7 +54,8 @@ app.post("/registration", (req, res) => {
 })
 
 app.post("/login", (req, res) => {
-    const { email, password } = req.body;
+    var { email, password } = req.body;
+    email = email.toLowerCase();
     User.findOne({email: email}, (err, user) =>{
         if(user){
             if(password === user.password)
@@ -65,6 +68,12 @@ app.post("/login", (req, res) => {
             res.send({message: "Email doesn't exist", status: 2});
         }
     })
+})
+
+app.get("/course", (req, res) => {
+    Courses.find()
+    .then(foundCourses => res.json(foundCourses))
+    .then(console.log("From Course"))
 })
 
 

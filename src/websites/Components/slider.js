@@ -15,12 +15,12 @@ function slider() {
     const img = [
         {
             imgPath: banner,
-            label: 'image1'
+            label: 'Mumbai Stock Exchange'
     
         },
         {
             imgPath: banner2,
-            label: 'image2'
+            label: 'Kolkata Stock Exchange'
         }
     ];
     // if(currImg == img[0].imgPath)
@@ -29,7 +29,7 @@ function slider() {
     //     setImg(img[0]);
     return(
         <div className='home__container'>
-            <img src={img[0].imgPath} alt='image'></img>
+            <img src={img[0].imgPath} alt='Banner'></img>
         </div>
     )
 }
