@@ -15,8 +15,9 @@ function App() {
   const [userLogin, setUserLogin] = useState(false);
   return (
     <div className='div__app'>
+      {/* <RequireAuth></RequireAuth> */}
       <BrowserRouter>
-      <Navbar />
+      <Navbar className="shadow-lg p-3 mb-5 bg-body rounded"/>
         <Routes>
           {/* <Route path='/' element={<Navbar />} /> */}
             <Route index='Home' element={<Home />} />

@@ -76,6 +76,11 @@ app.get("/course", (req, res) => {
     .then(console.log("From Course"))
 })
 
+app.get("/userdashboard",(req, res) => {
+    res.send({message: "Hello"});
+    console.log("From UserDashboard");
+})
+
 
 
 app.listen(port, () =>{

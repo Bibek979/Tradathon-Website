@@ -38,3 +38,8 @@ input.labelColor.otp{
   width: 50%;
   align-self: center;
 }
+
+
+.signin-container, .signup-container{
+  background-color: #E4D8E8;
+}

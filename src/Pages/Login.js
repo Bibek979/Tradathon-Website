@@ -23,7 +23,7 @@ export default function Login() {
     const {email, password} = loginData;
     if(email && password)
     {
-      axios.post("http://localhost:5500/login", loginData)
+      axios.post("http://192.168.1.10:5500/login", loginData)
       .then( res => {
         if(res.data.status === 0){
           alert(res.data.message);
@@ -45,11 +45,11 @@ export default function Login() {
 
 
   return (
-    <div className="container rounded w-25 bg-secondary bg-gradient">
-      <h3 className="card-title text-center pt-4 text-white">Login</h3>
+    <div className="container rounded w-25 signin-container shadow-lg p-3 mb-5 bg-body rounded">
+      <h3 className="card-title text-center pt-4 text-dark font-weight-bold">Login</h3>
       <form className="form" onSubmit={handleSubmitAction}>
         <div className="d-flex p-3 flex-column">
-          <label className="text-center p-2 text-white">E-Mail/User</label>
+          <label className="text-center p-2 text-dark">E-Mail/User</label>
           <input
             type="email"
             name="email"
@@ -61,7 +61,7 @@ export default function Login() {
         </div>
 
         <div className="d-flex p-3 flex-column">
-          <label className="text-center p-2 text-white">Password</label>
+          <label className="text-center p-2 text-dark">Password</label>
           <input
             type="password"
             name="password"

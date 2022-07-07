@@ -35,7 +35,7 @@ export default function SignUpForm() {
     const {firstname, lastname, email, password, confpassword} = state;
     console.log(firstname+" "+lastname+" "+email+" "+password+" "+confpassword)
     if (firstname && lastname && email) {
-      axios.post("http://localhost:5500/registration", state)
+      axios.post("http://192.168.1.10:5500/registration", state)
       .then( res => alert(res.data.message))
       .then( () => navigate("/login"))
       console.log("Signed Up successfully !");
@@ -54,7 +54,7 @@ export default function SignUpForm() {
   // };
 
   return (
-    <div className="container-sm my-5 py-3 signup-container">
+    <div className="container-sm my-5 py-3 shadow-lg p-3 mb-5 bg-body rounded signup-container">
       <h1 className="mb-4 text-center">Registration Form</h1>
       <Form onSubmit={handleSubmit} className="w-2">
         <Form.Group className="mb-3 text-center fs-6" controlId="formFirstName">

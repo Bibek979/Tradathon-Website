@@ -6,6 +6,10 @@
   height: calc(100% - 60px);
 } */
 
+body{
+  background-color: #C98EDA;
+}
+
 a{
   text-decoration: none;
 }
