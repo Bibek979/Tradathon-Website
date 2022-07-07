@@ -35,7 +35,7 @@ export default function SignUpForm() {
     const {firstname, lastname, email, password, confpassword} = state;
     console.log(firstname+" "+lastname+" "+email+" "+password+" "+confpassword)
     if (firstname && lastname && email) {
-      axios.post("http://192.168.1.10:5500/registration", state)
+      axios.post("http://localhost:5500/registration", state)
       .then( res => alert(res.data.message))
       .then( () => navigate("/login"))
       console.log("Signed Up successfully !");

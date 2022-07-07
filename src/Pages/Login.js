@@ -23,7 +23,7 @@ export default function Login() {
     const {email, password} = loginData;
     if(email && password)
     {
-      axios.post("http://192.168.1.10:5500/login", loginData)
+      axios.post("http://localhost:5500/login", loginData)
       .then( res => {
         if(res.data.status === 0){
           alert(res.data.message);

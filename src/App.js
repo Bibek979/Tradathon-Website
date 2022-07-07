@@ -22,13 +22,7 @@ function App() {
           {/* <Route path='/' element={<Navbar />} /> */}
             <Route index='Home' element={<Home />} />
             <Route path='signup' element={<SignUpForm />} />
-            <Route path='course' element={<Course 
-            courseHeading="Basics of Stock Market"
-            courseContent1 = "Chart Reading"
-            courseContent2 = "Fundamental Analysis"
-            courseContent3 = "Past Performance"
-            coursePrice = '1000'
-            />} />
+            <Route path='course' element={<Course/>} />
             <Route path='login' element={<Login />} />
             <Route path='forgotpwd' element={<ForgotPassword />} />
             <Route path='userdashboard' element={<UserDashboard />} />
