@@ -1,14 +1,14 @@
 import './home__style.css';
 import React from 'react';
-import Slider from './Components/slider.js';
-import Qoutes from '../Components/Components__qoutes/qoutes';
-import LearnHeading from '../Components/Components__learn/learn__heading';
-import LearnContent from '../Components/Components__learn/learn__content';
-import Section from '../Components/whoAreWeSection/section';
-import img1 from '../Images/research.png';
-import img2 from '../Images/wait.png';
-import img3 from '../Images/target.png';
-import img4 from '../Images/trade.png';
+import Slider from '../Slider/slider';
+import Qoutes from '../Components__qoutes/qoutes';
+import LearnHeading from '../Components__learn/learn__heading';
+import LearnContent from '../Components__learn/learn__content';
+import Section from '../whoAreWeSection/section';
+import img1 from '../../Images/research.png';
+import img2 from '../../Images/wait.png';
+import img3 from '../../Images/target.png';
+import img4 from '../../Images/trade.png';
 
 
 function Home() {

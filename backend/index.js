@@ -73,12 +73,17 @@ app.post("/login", (req, res) => {
 app.get("/course", (req, res) => {
     Courses.find()
     .then(foundCourses => res.json(foundCourses))
-    .then(console.log("From Course"))
 })
 
 app.get("/userdashboard",(req, res) => {
-    res.send({message: "Hello"});
-    console.log("From UserDashboard");
+    if(Courses.find())
+    {
+        Courses.find()
+        .then(foundCourses => res.json(foundCourses))
+    }
+    else{
+        res.send({message: "Failed"})
+    }
 })
 
 

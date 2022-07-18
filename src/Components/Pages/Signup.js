@@ -34,8 +34,8 @@ export default function SignUpForm() {
     // setState({...state, email: email.toLowerCase()});
     const {firstname, lastname, email, password, confpassword} = state;
     console.log(firstname+" "+lastname+" "+email+" "+password+" "+confpassword)
-    if (firstname && lastname && email) {
-      axios.post("http://192.168.1.10:5500/registration", state)
+    if (firstname && lastname && email && (password === confpassword)) {
+      axios.post("http://localhost:5500/registration", state)
       .then( res => alert(res.data.message))
       .then( () => navigate("/login"))
       console.log("Signed Up successfully !");
@@ -44,6 +44,14 @@ export default function SignUpForm() {
       alert("Validate the input field ");
     }
   };
+
+  const resetAll = () => {
+    setState({firstname: ""});
+    setState({lastname: ""});
+    setState({email: ""});
+    setState({password: ""});
+    setState({confpassword: ""});
+  }
 
   // function validateForm() {
   //   const {fname, lname, email, pwd, confpwd} = state;
@@ -54,7 +62,7 @@ export default function SignUpForm() {
   // };
 
   return (
-    <div className="container-sm my-5 py-3 shadow-lg p-3 mb-5 bg-body rounded signup-container">
+    <div className="container-sm container-md container-lg my-5 py-3 shadow-lg p-3 mb-5 bg-body rounded signup-container">
       <h1 className="mb-4 text-center">Registration Form</h1>
       <Form onSubmit={handleSubmit} className="w-2">
         <Form.Group className="mb-3 text-center fs-6" controlId="formFirstName">
@@ -84,7 +92,7 @@ export default function SignUpForm() {
 
         <div className="d-flex justify-content-around pt-3">
           <Button variant="primary" type="submit">Register Me !</Button>
-          <Button variant="primary" type="reset">Reset</Button>
+          <Button variant="primary" type="reset" onClick={resetAll}>Reset</Button>
           <Button variant="primary" onClick={()=>navigate("/login")}>Back to Login</Button>
         </div>
       </Form>

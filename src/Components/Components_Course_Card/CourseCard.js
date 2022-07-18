@@ -14,7 +14,7 @@ const CourseCard = ({userData}) => {
             <Card.Title className="px-3">&#8377;{userData.course_amount}</Card.Title>
             <Container className="">
                 <Button variant="primary">Buy Now</Button>
-                <a href="#" className="p-3"><img width="15%" src={cartImg}></img></a>
+                <a href="www.google.com" className="p-3"><img width="15%" src={cartImg} alt="Buy Now"></img></a>
             </Container>
         </Card>
     )

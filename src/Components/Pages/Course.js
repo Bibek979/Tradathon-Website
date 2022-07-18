@@ -1,12 +1,11 @@
-
 import React, { useEffect, useState } from "react";
 import './stylesheet.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import CourseCard from "../Components/Components_Course_Card/CourseCard";
+import CourseCard from "../Components_Course_Card/CourseCard";
 import axios from "axios";
 
 
-export default function Course(props){
+export default function Course(){
     const [responseData, setResponseData] = useState([]);
 
     const getApi = async () => {
@@ -19,7 +18,7 @@ export default function Course(props){
         getApi();
     }, []);
     return(
-        <div className="d-flex">
+        <div className="d-flex" style={{justifyContent: "center"}}>
             {responseData.map((user, index) =>(
                 <CourseCard key={index} userData={user}/>
             ))}

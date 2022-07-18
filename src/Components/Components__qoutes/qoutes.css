@@ -11,6 +11,8 @@
 }
 
 .qoutes__container__words{
+    position: relative;
+    top: -30px;
     display: flex;
     justify-content: center;
     align-items: center;
