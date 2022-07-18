@@ -16,23 +16,8 @@ export default function Login() {
     password: ""
   })
 
-<<<<<<< HEAD:src/Components/Pages/Login.js
   const login = () => {
     axios.post("http://192.168.1.10:5500/login", loginData)
-=======
-  const handleChange = (e) =>{
-    const elemName = e.target.name;
-    const value = e.target.value;
-    setLoginData({...loginData, [elemName]: value});
-  }
-  
-  function handleSubmitAction(e) {
-    e.preventDefault();
-    const {email, password} = loginData;
-    if(email && password)
-    {
-      axios.post("http://localhost:5500/login", loginData)
->>>>>>> e3cb32e138c5ea8dbb93e6b8903c2c4eb71cf1ed:src/Pages/Login.js
       .then( res => {
         if(res.data.status === 0){
           alert(res.data.message);
