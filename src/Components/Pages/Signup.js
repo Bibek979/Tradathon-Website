@@ -34,7 +34,11 @@ export default function SignUpForm() {
     // setState({...state, email: email.toLowerCase()});
     const {firstname, lastname, email, password, confpassword} = state;
     console.log(firstname+" "+lastname+" "+email+" "+password+" "+confpassword)
+<<<<<<< HEAD:src/Components/Pages/Signup.js
     if (firstname && lastname && email && (password === confpassword)) {
+=======
+    if (firstname && lastname && email) {
+>>>>>>> e3cb32e138c5ea8dbb93e6b8903c2c4eb71cf1ed:src/Pages/Signup.js
       axios.post("http://localhost:5500/registration", state)
       .then( res => alert(res.data.message))
       .then( () => navigate("/login"))

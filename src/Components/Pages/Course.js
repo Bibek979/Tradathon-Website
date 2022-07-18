@@ -9,7 +9,7 @@ export default function Course(){
     const [responseData, setResponseData] = useState([]);
 
     const getApi = async () => {
-        const url = await axios.get("http://192.168.1.10:5500/course");
+        const url = await axios.get("http://localhost:5500/course");
         console.log(url.data); //To display all the data returned from the server
         setResponseData(url.data);
     }
