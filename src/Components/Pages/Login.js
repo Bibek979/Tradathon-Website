@@ -1,16 +1,15 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import "./stylesheet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
+import "./stylesheet.css";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "react-bootstrap";
-// import { PrivateRoutes } from "../Components/PrivateRoutes";
 import { IsLoggedIn } from "../../Helper/Context";
+import axios from "axios";
 
 export default function Login() {
-  const { userLogin , setUserLogin } = useContext(IsLoggedIn);  
+  const { setUserLogin } = useContext(IsLoggedIn);
   const navigate = useNavigate();
+  const { state } = useLocation();
   const [loginData, setLoginData] = useState({
     email: "",
     password: ""
@@ -19,9 +18,12 @@ export default function Login() {
   const login = () => {
     axios.post("http://192.168.1.10:5500/login", loginData)
       .then( res => {
-        if(res.data.status === 0){
+        if(res.data.status === 0) {
+          var name = res.data.user.name;
           alert(res.data.message);
-          navigate("/userdashboard", {replace: true});
+          setUserLogin(true);
+          console.log(state);
+          navigate(state.path || "/userdashboard", {replace: true, state:{currName: name}});
         }
         else if( res.data.status === 1){
           alert(res.data.message)

@@ -19,7 +19,7 @@ function Navbar(){
                 <div className='myCustomNavMenu'>
                     <Link to='/'>Home</Link> 
                     <Link to={myRef} onClick={executeScroll}>About</Link>
-                    <Link to='/login'>Learn</Link>
+                    <Link to='/learn'>Learn</Link>
                     <Link to='/course'>Courses</Link>
                     <Link to='/signup'>Sign Up</Link>
                 </div>

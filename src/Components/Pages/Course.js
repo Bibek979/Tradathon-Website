@@ -13,6 +13,7 @@ export default function Course(){
         console.log(url.data); //To display all the data returned from the server
         setResponseData(url.data);
     }
+    console.log(responseData)
 
     useEffect(() => {
         getApi();

@@ -10,14 +10,17 @@ import Course from '../Pages/Course';
 import Login from '../Pages/Login';
 import ForgotPassword from '../Pages/ForgotPassword';
 import UserDashboard from '../userDashboard/UserDashboard';
+import LearnModule from '../Learn__Module/LearnModule';
 import { PrivateRoutes } from '../PrivateRoutes';
 // import LogedInNavbar from './Components/ComponentsNavbar/logedInNavbar';
-import {IsLoggedIn} from '../../Helper/Context';
+import { IsLoggedIn } from '../../Helper/Context';
+import Admin from '../Components__Admin/Admin';
+import AdminContentEditor from '../Components__Admin/AdminContentEditor';
 
 function App() {
   const [userLogin, setUserLogin] = useState(false);
   return (
-    <IsLoggedIn.Provider value={{userLogin, setUserLogin}}>
+    <IsLoggedIn.Provider value={{ userLogin, setUserLogin }}>
       {/* <RequireAuth></RequireAuth> */}
       <BrowserRouter>
       <Navbar className="shadow-lg p-3 mb-5 bg-body rounded"/>
@@ -27,11 +30,15 @@ function App() {
             <Route path='signup' element={<SignUpForm />} />
             <Route path='login' element={<Login />} />
             <Route path='forgotpwd' element={<ForgotPassword />} />
+            <Route path="learn" element={<LearnModule />}
+            />
             <Route element={<PrivateRoutes />}>
-              
                 <Route path='course' element={<Course />} />
                 <Route path='userdashboard' element={<UserDashboard />} />
-              
+            </Route>
+            <Route path='admin' element={<Admin />}>
+              <Route path='contentedit' element={<AdminContentEditor />} />
+              <Route path='manageusers' element={<AdminContentEditor />} />
             </Route>
             <Route path='*' element={<PageNotFound />} />
           </Routes>
