@@ -32,8 +32,7 @@ const LearnModule = () => {
     <Container>
         <h1 style={{margin: "45px", fontWeight: "bold"}}>Learn With Tradathon</h1>
         {learningModule.map((data, index) => (
-                <LearnMap key={index} moduleData={data}
-                />
+                <LearnMap key={index} moduleData={data} />
         ))}
     </Container>
   )

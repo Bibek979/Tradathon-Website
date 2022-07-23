@@ -16,6 +16,7 @@ import { PrivateRoutes } from '../PrivateRoutes';
 import { IsLoggedIn } from '../../Helper/Context';
 import Admin from '../Components__Admin/Admin';
 import AdminContentEditor from '../Components__Admin/AdminContentEditor';
+import LearningDashboard from '../Learn__Module/LearningDashboard';
 
 function App() {
   const [userLogin, setUserLogin] = useState(false);
@@ -30,8 +31,8 @@ function App() {
             <Route path='signup' element={<SignUpForm />} />
             <Route path='login' element={<Login />} />
             <Route path='forgotpwd' element={<ForgotPassword />} />
-            <Route path="learn" element={<LearnModule />}
-            />
+            <Route path="learn" element={<LearnModule />} />
+            <Route path="learning" element={<LearningDashboard />} />
             <Route element={<PrivateRoutes />}>
                 <Route path='course' element={<Course />} />
                 <Route path='userdashboard' element={<UserDashboard />} />
@@ -44,7 +45,7 @@ function App() {
           </Routes>
           <Footer />
         </BrowserRouter>
-      
+
       </IsLoggedIn.Provider>
   );
 }
