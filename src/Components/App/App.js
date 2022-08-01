@@ -37,15 +37,14 @@ function App() {
                 <Route path='course' element={<Course />} />
                 <Route path='userdashboard' element={<UserDashboard />} />
             </Route>
-            <Route path='admin' element={<Admin />}>
+            {/* <Route path='admin' element={<Admin />}>
               <Route path='contentedit' element={<AdminContentEditor />} />
               <Route path='manageusers' element={<AdminContentEditor />} />
-            </Route>
+            </Route> */}
             <Route path='*' element={<PageNotFound />} />
           </Routes>
           <Footer />
         </BrowserRouter>
-
       </IsLoggedIn.Provider>
   );
 }

@@ -1,10 +1,17 @@
 import React from 'react'
 import { Row, Col, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import LearningDashboard from './LearningDashboard'
 
-const handleReadClicked = (moduleData) => {
-    alert(moduleData.id)
-}
+
 const LearnMap = ({ moduleData }) => {
+    const navigate = useNavigate();
+    const handleReadClicked = (moduleData) => {
+        navigate('/learning', {state: {id: moduleData}})
+        // alert(moduleData.id)
+    
+    }
+
   return (
     <Row style={{height: "250px", padding: "0", background: "lightpink", borderRadius: "10px", marginBottom: "2em",  overflow: "hidden"}}>
                     <Col style={{padding: '0', margin: '0'}} lg={4} xl={4}>
