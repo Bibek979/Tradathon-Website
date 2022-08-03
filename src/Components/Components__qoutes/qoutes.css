@@ -5,7 +5,7 @@
     text-align: center;
     height: 45vh;
     background-repeat: no-repeat;
-    background-image: url("E:/WebProgramming/Stock Education Site/tradathon/src/Images/bg__qoutes__img.png");
+    background-image: url("../../Images/bg__qoutes__img.png");
     background-position: center;
     text-justify:auto;
 }
