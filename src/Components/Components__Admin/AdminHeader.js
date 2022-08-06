@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/esm/Col'
 import adminIcon from "../../Images/admin.png"
 import Dropdown from "react-bootstrap/Dropdown"
 const AdminHeader = () => {
+    // Keys deleted seems
     const navigate = useNavigate();
     const handleContentEdit =() => {
         navigate("contentedit", { replace: true })
