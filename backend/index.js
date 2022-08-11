@@ -3,16 +3,23 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const port = 5500;
+// var pwd = encodeURIComponent(".,Bibek//721133");
 
 
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/tradathonDB", {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true
-}, () => {console.log("DB Connected")});
+// mongoose.connect("mongodb+srv://bibekProject:.,Bibek//721133@cluster0.q4a1n.mongodb.net/?retryWrites=true&w=majority", {
+//     useNewUrlParser: true, 
+//     useUnifiedTopology: true
+// }, () => {console.log("DB Connected")})
+// .catch(
+//     (error) => {console.log("Connection Error "+error)}
+// );
+
+mongoose.connect("mongodb+srv://bibekProject:.%2CBibek%2F%2F721133@cluster0.q4a1n.mongodb.net/?retryWrites=true&w=majority")
+.catch((error)=>{console.log(error)})
 
 const userSchema = new mongoose.Schema({
     firstname: String,
