@@ -2,7 +2,9 @@ import React from 'react'
 
 const AdminContentEditor = () => {
   return (
-    <div>Edit Contents</div>
+    <>
+      <h4 style={{alignText: "center"}}>Edit Contents</h4>
+    </>
   )
 }
 
