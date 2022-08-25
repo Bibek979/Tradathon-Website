@@ -7,7 +7,7 @@ import LearningDashboard from './LearningDashboard'
 const LearnMap = ({ moduleData }) => {
     const navigate = useNavigate();
     const handleReadClicked = (moduleData) => {
-        navigate('/learning', {state: {id: moduleData}})
+        navigate('/learning', {state: { id: moduleData }})
         // alert(moduleData.id)
     
     }

@@ -4,14 +4,64 @@ import { Document, Page } from 'react-pdf';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import "./styles.css"
-import pdf1 from "../../samplePDF/pdf1.pdf"
-import pdf2 from "../../samplePDF/pdf2.pdf"
-import pdf3 from "../../samplePDF/sample1.pdf"
+
+import pdf1 from "../../samplePDF/module1.pdf"
+import pdf2 from "../../samplePDF/module2.pdf"
+import pdf3 from "../../samplePDF/module3.pdf"
+import pdf4 from "../../samplePDF/module4.pdf"
+import pdf5 from "../../samplePDF/module5.pdf"
+// with this function I wanted to edit the location of the file 
+// const locationFixer = (str) => {
+//     console.log(str);
+//     var newLocation = "";
+//     var flipper = true;
+//     for(var i = 0;i<str.length; i++)
+//     {
+//         if(flipper === true) {
+//             if(str[i] === '.')
+//             {
+//                 if(flipper === true)
+//                 {
+//                     flipper = false;
+//                 }
+//                 else {
+//                     flipper = true;
+//                 }
+//             }
+//             else {
+//                 newLocation = newLocation+str[i];
+//             }
+//         }
+//         else {
+//             flipper = true;
+//         }
+//     }
+//     newLocation = newLocation+".pdf";
+//     console.log(newLocation);
+//     return newLocation;
+// }   
+
+// const searchPdf = (str) => {
+//     var i = 1;
+//     while(i < 5){
+//         if(str.indexOf(i) != -1){
+//             continue;
+//         }
+//         else
+//         {
+//             return i;
+//         }
+//     }
+
+// }
 
 const LearningDashboard = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location.state.id.pdflocation)
+    // console.log(location.state.id.pdflocation)
+    // var b = location.state.id.pdflocation;
+    // var newLocation = locationFixer(b);
+    // console.log(newLocation);
     const [numPages, setNumPages] = useState(null);
     const [ pageNumber, setPageNumber ] = useState(1);
 
