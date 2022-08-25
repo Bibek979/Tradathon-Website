@@ -5,7 +5,7 @@ import learnimg2 from "../../Images/riskmanagement.png"
 import learnimg3 from "../../Images/psychology.png"
 import LearnMap from './LearnMap'
 
-import pdf1 from "E:/WebProgramming/Stock Education Site/tradathon/src/samplePDF/module1.pdf"
+import pdf1 from "../../samplePDF/module1.pdf"
 import pdf2 from "../../samplePDF/pdf2.pdf"
 import pdf3 from "../../samplePDF/sample1.pdf"
 
@@ -40,7 +40,6 @@ const LearnModule = () => {
     <Container>
         <h1 style={{margin: "45px", fontWeight: "bold"}}>Learn With Tradathon</h1>
         {learningModule.map((data, index) => (
-                console.log(data.pdflocation),
                 <LearnMap key={index} moduleData={data} />
         ))}
     </Container>

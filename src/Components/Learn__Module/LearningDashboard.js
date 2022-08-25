@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Document, Page } from 'react-pdf';
 import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 import "./styles.css"
 
 import pdf1 from "../../samplePDF/module1.pdf"
@@ -55,9 +55,10 @@ import pdf5 from "../../samplePDF/module5.pdf"
 
 // }
 
-const LearningDashboard = () => {
-    const navigate = useNavigate();
+const LearningDashboard = (state) => {
     const location = useLocation();
+    console.log(location.state.id.pdflocation)
+    const navigate = useNavigate();
     // console.log(location.state.id.pdflocation)
     // var b = location.state.id.pdflocation;
     // var newLocation = locationFixer(b);
