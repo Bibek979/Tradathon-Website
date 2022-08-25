@@ -16,14 +16,14 @@ export default function Login() {
   })
 
   const login = () => {
-    axios.post("http://192.168.1.10:5500/login", loginData)
+    axios.post("http://localhost:5500/login", loginData)
       .then( res => {
         if(res.data.status === 0) {
           var name = res.data.user.name;
           alert(res.data.message);
           setUserLogin(true);
           console.log(state);
-          navigate(state.path || "/userdashboard", {replace: true, state:{currName: name}});
+          navigate("/userdashboard", {replace: true, state:{currName: name}});
         }
         else if( res.data.status === 1){
           alert(res.data.message)

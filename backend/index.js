@@ -19,6 +19,9 @@ app.use(cors());
 // );
 
 mongoose.connect("mongodb+srv://bibekProject:.%2CBibek%2F%2F721133@cluster0.q4a1n.mongodb.net/?retryWrites=true&w=majority")
+.then(
+    console.log("Connected online database")
+)
 .catch((error)=>{console.log(error)})
 
 const userSchema = new mongoose.Schema({
@@ -62,6 +65,7 @@ app.post("/registration", (req, res) => {
 
 app.post("/login", (req, res) => {
     var { email, password } = req.body;
+    console.log(email);
     email = email.toLowerCase();
     User.findOne({email: email}, (err, user) =>{
         if(user){
