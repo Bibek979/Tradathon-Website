@@ -7,9 +7,7 @@ import learnimg4 from "../../Images/riskmanagement.png"
 import learnimg5 from "../../Images/psychology.png"
 import LearnMap from './LearnMap'
 
-import pdf1 from "../../samplePDF/module1.pdf"
-import pdf2 from "../../samplePDF/pdf2.pdf"
-import pdf3 from "../../samplePDF/sample1.pdf"
+
 
 const LearnModule = () => {
     const learningModule = [
