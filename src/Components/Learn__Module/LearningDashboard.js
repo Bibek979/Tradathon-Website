@@ -57,7 +57,30 @@ import pdf5 from "../../samplePDF/module5.pdf"
 
 const LearningDashboard = (state) => {
     const location = useLocation();
-    console.log(location.state.id.pdflocation)
+    console.log(location.state.id.id);
+    var module;
+    if(location.state.id.id === 1)
+    {
+        module = pdf1;
+    }
+    else if(location.state.id.id === 2)
+    {
+        module = pdf2;
+    }
+    else if(location.state.id.id === 3)
+    {
+        module = pdf3;
+    }
+
+    else if(location.state.id.id === 4)
+    {
+        module = pdf4;
+    }
+    else if(location.state.id.id === 5)
+    {
+        module = pdf5;
+    }
+
     const navigate = useNavigate();
     // console.log(location.state.id.pdflocation)
     // var b = location.state.id.pdflocation;
@@ -91,7 +114,7 @@ const LearningDashboard = (state) => {
     <React.Fragment>
         <Button onClick={handleBackBtn} style={{position: "relative", left: "2em", top: "2em"}}>Go back</Button>
         <h2 style={{textAlign: "center", fontWeight: 800}}>{location.state.id.header}</h2>
-        <Document file={pdf1} options={{ workerSrc: "pdf.worker.js"}} 
+        <Document file={module} options={{ workerSrc: "pdf.worker.js"}} 
             onLoadSuccess={onDocumentLoadSuccess}>
             <Page pageNumber={pageNumber} 
             renderAnnotationLayer={false} 
