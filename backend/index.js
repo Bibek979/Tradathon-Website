@@ -33,6 +33,7 @@ const userSchema = new mongoose.Schema({
 
 const User = new mongoose.model("User", userSchema);
 const Courses = new mongoose.model("Courses", userSchema);
+const Admin_User = new mongoose.model("admin_user", userSchema);
 
 // ***********************Registration Post Request ************************
 
@@ -86,6 +87,7 @@ app.get("/course", (req, res) => {
     .then(foundCourses => res.json(foundCourses))
 })
 
+
 app.get("/userdashboard",(req, res) => {
     if(Courses.find())
     {
@@ -95,6 +97,24 @@ app.get("/userdashboard",(req, res) => {
     else{
         res.send({message: "Failed"})
     }
+})
+app.post("/adminlogin", (req, res) => {
+    var { email, password } = req.body;
+    console.log(email);
+    email = email.toLowerCase();
+    console.log(email);
+    Admin_User.findOne({email: email}, (err, user) =>{
+        if(user){
+            if(password === user.password)
+                res.send({message: "Login Successfull", user, status: 0});
+            else{
+                res.send({message: "Password doesn't match", status: 1});
+            }
+        }
+        else{
+            res.send({message: "Email doesn't exist", status: 2});
+        }
+    })
 })
 
 

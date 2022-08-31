@@ -14,7 +14,7 @@ import LearnModule from '../Learn__Module/LearnModule';
 import { PrivateRoutes } from '../PrivateRoutes';
 // import LogedInNavbar from './Components/ComponentsNavbar/logedInNavbar';
 import { IsLoggedIn } from '../../Helper/Context';
-import Admin from '../Components__Admin/Admin';
+import Admin from '../Components__Admin/AdminLogin';
 import AdminContentEditor from '../Components__Admin/AdminContentEditor';
 import LearningDashboard from '../Learn__Module/LearningDashboard';
 
