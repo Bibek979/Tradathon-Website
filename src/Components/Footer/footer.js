@@ -8,9 +8,10 @@ export default function Footer() {
             <div className="footerTop">
                 <Link to='/'>Home</Link>
                 <Link to='#'>Features</Link>
-                <Link to='#'>Pricing</Link>
+                {/* <Link to='#'>Pricing</Link> */}
                 <Link to='#'>FAQs</Link>
                 <Link to='#'>About</Link>
+                <Link to='admin'>Admin</Link>
             </div>
             <div className="footerBottom">
                 <p>&copy;2022 Burchodi Investing Company, Inc</p>
