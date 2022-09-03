@@ -5,9 +5,14 @@ import Row from 'react-bootstrap/esm/Row'
 import Col from 'react-bootstrap/esm/Col'
 import adminIcon from "../../Images/admin.png"
 import Dropdown from "react-bootstrap/Dropdown"
+import { AdminLoggedIn } from '../../Helper/Context'
 import { ActiveContext } from './Admin'
 const AdminHeader = () => {
+    const { setAdminLogin } = useContext(AdminLoggedIn);
     var {active, setActive} = useContext(ActiveContext);
+    const logOut = () => {
+        setAdminLogin(false);
+    }
   return (
     <Container fluid>
         <Row className='m-0'>
@@ -21,7 +26,7 @@ const AdminHeader = () => {
                     <Dropdown.Menu>
                         <Dropdown.Item onClick={() => {setActive(1);console.log(active);}}>Edit Content</Dropdown.Item>
                         <Dropdown.Item onClick={() => {setActive(2);console.log(active);}}>Manage Users</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Log Out</Dropdown.Item>
+                        <Dropdown.Item onClick={logOut}>Log Out</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </Col>

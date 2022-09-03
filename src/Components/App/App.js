@@ -11,16 +11,20 @@ import Login from '../Pages/Login';
 import ForgotPassword from '../Pages/ForgotPassword';
 import UserDashboard from '../userDashboard/UserDashboard';
 import LearnModule from '../Learn__Module/LearnModule';
-import { PrivateRoutes } from '../PrivateRoutes';
+import { PrivateRoutes } from '../../Helper/PrivateRoutes';
 // import LogedInNavbar from './Components/ComponentsNavbar/logedInNavbar';
 import { IsLoggedIn } from '../../Helper/Context';
 import Admin from '../Components__Admin/adminLogin';
+import AdminDashboard from '../Components__Admin/Admin';
 import AdminContentEditor from '../Components__Admin/AdminContentEditor';
 import LearningDashboard from '../Learn__Module/LearningDashboard';
-
+import { AdminLoggedIn } from '../../Helper/Context';
+import { AdminProtectedRoute } from "../../Helper/adminProtectedRoute";
 function App() {
   const [userLogin, setUserLogin] = useState(false);
+  const [adminLogin, setAdminLogin] = useState(false);
   return (
+    <AdminLoggedIn.Provider value={{ adminLogin, setAdminLogin }}>
     <IsLoggedIn.Provider value={{ userLogin, setUserLogin }}>
       {/* <RequireAuth></RequireAuth> */}
       <BrowserRouter>
@@ -33,19 +37,20 @@ function App() {
             <Route path='forgotpwd' element={<ForgotPassword />} />
             <Route path="learn" element={<LearnModule />} />
             <Route path="learning" element={<LearningDashboard />} />
+            <Route path="adminLogin" element={<Admin/>} />
             <Route element={<PrivateRoutes />}>
                 <Route path='course' element={<Course />} />
                 <Route path='userdashboard' element={<UserDashboard />} />
             </Route>
-            <Route path='admin' element={<Admin />}>
-              <Route index path='contentedit' element={<AdminContentEditor />} />
-              <Route path='manageusers' element={<AdminContentEditor />} />
+            <Route element={<AdminProtectedRoute />}>
+              <Route index path='admindashboard' element={<AdminDashboard />} />
             </Route>
             <Route path='*' element={<PageNotFound />} />
           </Routes>
           <Footer />
         </BrowserRouter>
       </IsLoggedIn.Provider>
+      </AdminLoggedIn.Provider>
   );
 }
 

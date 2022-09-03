@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useContext } from 'react';
 import Login from '../Pages/Login';
+import { AdminLoggedIn } from '../../Helper/Context';
 import './styles.css';
 import axios from "axios";
+import { useNavigate, useLocation } from 'react-router-dom';
 const AdminLogin = () => {
+  const { setAdminLogin } = useContext(AdminLoggedIn);
+  const navigate = useNavigate();
+  const { state } = useLocation();
   const [ adminData, setAdminData ] = useState({
     email: "",
     password: ""
@@ -15,9 +21,10 @@ const AdminLogin = () => {
         if(res.data.status === 0) {
           var name = res.data.user.name;
           alert(res.data.message);
+          setAdminLogin(true);
           // setUserLogin(true);
           // console.log(state);
-          // navigate("/userdashboard", {replace: true, state:{currName: name}});
+          navigate("/admindashboard", {replace: true, state:{currName: name}});
         }
         else if( res.data.status === 1){
           alert(res.data.message)

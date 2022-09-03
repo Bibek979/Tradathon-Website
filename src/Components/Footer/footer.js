@@ -11,7 +11,7 @@ export default function Footer() {
                 {/* <Link to='#'>Pricing</Link> */}
                 <Link to='#'>FAQs</Link>
                 <Link to='#'>About</Link>
-                <Link to='admin'>Admin</Link>
+                <Link to='admindashboard'>Admin</Link>
             </div>
             <div className="footerBottom">
                 <p>&copy;2022 Burchodi Investing Company, Inc</p>
