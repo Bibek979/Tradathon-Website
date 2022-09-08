@@ -30,7 +30,7 @@ function Navbar(){
                     {
                         (userLogin.userLogin === true || adminLogin.adminLogin === true) ? 
                         ((userLogin.userLogin === true) ?  (<Link to='/signup'>User LoggedIn</Link>) : 
-                        (<Link to='/signup'>AdminLogged In</Link>)) : (<Link to='/signup'>WTF</Link>)
+                        (<Link to='/signup'>AdminLogged In</Link>)) : (<Link to='/signup'>Sign Up</Link>)
                     }
                     
                 </div>
