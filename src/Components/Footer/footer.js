@@ -14,7 +14,7 @@ export default function Footer() {
                 <Link to='admindashboard'>Admin</Link>
             </div>
             <div className="footerBottom">
-                <p>&copy;2022 Burchodi Investing Company, Inc</p>
+                <p>&copy;2022 Tradathon Investing Company, Inc</p>
             </div>
         </footer>
     )
