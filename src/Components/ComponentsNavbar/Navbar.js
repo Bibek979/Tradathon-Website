@@ -15,7 +15,7 @@ function Navbar(){
     console.log(adminLogin.adminLogin);
     console.log(userLogin.userLogin);
     const executeScroll = () =>
-        myRef.current.scrollIntoView();
+        {myRef.current.scrollIntoView();}
     return(
         <nav className='rounded'>
             <div className='container-fluid customNavbar'>
